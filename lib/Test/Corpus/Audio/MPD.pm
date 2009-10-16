@@ -41,14 +41,16 @@ Readonly my $CONFIG   => catfile( $TMPDIR, 'mpd.conf' );
 
 # -- public subs
 
-#
-# customize_test_mpd_configuration( [$port] )
-#
-# Create a fake mpd configuration file, based on the file mpd.conf.template
-# located in t/mpd-test. The string PWD will be replaced by the real path -
-# ie, where the tarball has been untarred. The string PORT will be replaced
-# by $port if specified, 6600 otherwise (MPD default).
-#
+=method customize_test_mpd_configuration( [$port] );
+
+Create a fake mpd configuration file, based on the file
+F<mpd.conf.template> located in F<share> subdir. The string PWD will be
+replaced by the real path (ie, where the tarball has been untarred),
+while TMP will be replaced by a new temp directory. The string PORT will
+be replaced by C<$port> if specified, 6600 otherwise (MPD's default).
+
+=cut
+
 sub customize_test_mpd_configuration {
     my ($port) = @_;
     $port ||= 6600;
@@ -71,11 +73,12 @@ sub customize_test_mpd_configuration {
 }
 
 
-#
-# start_test_mpd()
-#
-# Start the fake mpd, and die if there were any error.
-#
+=method start_test_mpd();
+
+Start the fake mpd, and die if there were any error.
+
+=cut
+
 sub start_test_mpd {
     my $output = qx{ mpd --create-db $CONFIG 2>&1 };
     die "could not start fake mpd: $output\n" if $output;
@@ -84,11 +87,12 @@ sub start_test_mpd {
 }
 
 
-#
-# stop_test_mpd()
-#
-# Kill the fake mpd.
-#
+=method stop_test_mpd();
+
+Kill the fake mpd.
+
+=cut
+
 sub stop_test_mpd {
     system "mpd --kill $CONFIG 2>/dev/null";
     sleep 1;   # wait 1 second to free output device.
@@ -140,6 +144,7 @@ __END__
 
     use Test::Corpus::Audio::MPD; # die if error
     [...]
+    stop_test_mpd();
 
 =head1 DESCRIPTION
 
