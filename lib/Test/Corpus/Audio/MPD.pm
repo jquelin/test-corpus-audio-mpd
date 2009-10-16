@@ -28,6 +28,28 @@ sub _find_share_dir {
 }
 
 
+#
+# my $was_running = _stop_user_mpd_if_needed()
+#
+# This sub will check if mpd is currently running. If it is, force it to
+# a full stop (unless MPD_TEST_OVERRIDE is not set).
+#
+# In any case, it will return a boolean stating whether mpd was running
+# before forcing stop.
+#
+sub _stop_user_mpd_if_needed {
+    # check if mpd is running.
+    my $is_running = grep { /\s+mpd$/ } qx{ ps -e };
+
+    return 0 unless $is_running; # mpd does not run - nothing to do.
+
+    # check force stop.
+    die "mpd is running\n" unless $ENV{MPD_TEST_OVERRIDE};
+    system( 'mpd --kill 2>/dev/null') == 0 or die "can't stop user mpd: $?\n";
+    sleep 1;  # wait 1 second to free output device
+    return 1;
+}
+
 
 1;
 __END__
