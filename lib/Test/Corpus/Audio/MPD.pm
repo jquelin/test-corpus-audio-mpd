@@ -52,6 +52,30 @@ sub customize_test_mpd_configuration {
 }
 
 
+#
+# start_test_mpd()
+#
+# Start the fake mpd, and die if there were any error.
+#
+sub start_test_mpd {
+    my $output = qx{ mpd --create-db $CONFIG 2>&1 };
+    die "could not start fake mpd: $output\n" if $output;
+    sleep 1;   # wait 1 second to let mpd start.
+    return 1;
+}
+
+
+#
+# stop_test_mpd()
+#
+# Kill the fake mpd.
+#
+sub stop_test_mpd {
+    system "mpd --kill $CONFIG 2>/dev/null";
+    sleep 1;   # wait 1 second to free output device.
+    unlink "$TMPDIR/state", "$TMPDIR/music.db";
+}
+
 
 # -- private subs
 
