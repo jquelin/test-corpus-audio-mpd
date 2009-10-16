@@ -11,7 +11,10 @@ use Module::Util          qw{ find_installed };
 use Readonly;
 
 use base qw{ Exporter };
-our @EXPORT = qw{ };
+our @EXPORT = qw{
+    customize_test_mpd_configuration
+    start_test_mpd stop_test_mpd
+};
 
 Readonly my $SHAREDIR => _find_share_dir();
 Readonly my $TEMPLATE => "$SHAREDIR/mpd.conf.template";
