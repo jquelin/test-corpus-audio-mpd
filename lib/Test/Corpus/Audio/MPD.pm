@@ -6,6 +6,7 @@ package Test::Corpus::Audio::MPD;
 
 use File::Basename        qw{ fileparse };
 use File::Spec::Functions qw{ catdir catfile };
+use File::Temp            qw{ tempdir };
 use Module::Util          qw{ find_installed };
 use Readonly;
 
@@ -13,6 +14,44 @@ use base qw{ Exporter };
 our @EXPORT = qw{ };
 
 Readonly my $SHAREDIR => _find_share_dir();
+Readonly my $TEMPLATE => "$SHAREDIR/mpd.conf.template";
+Readonly my $TMPDIR   => tempdir( CLEANUP=>1 );
+Readonly my $CONFIG   => catfile( $TMPDIR, 'mpd.conf' );
+
+
+
+# -- public subs
+
+#
+# customize_test_mpd_configuration( [$port] )
+#
+# Create a fake mpd configuration file, based on the file mpd.conf.template
+# located in t/mpd-test. The string PWD will be replaced by the real path -
+# ie, where the tarball has been untarred. The string PORT will be replaced
+# by $port if specified, 6600 otherwise (MPD default).
+#
+sub customize_test_mpd_configuration {
+    my ($port) = @_;
+    $port ||= 6600;
+
+    # open template and config.
+    open my $in,  '<',  $TEMPLATE or die "can't open [$TEMPLATE]: $!";
+    open my $out, '>',  $CONFIG   or die "can't open [$CONFIG]: $!";
+
+    # replace string and fill in config file.
+    while ( defined( my $line = <$in> ) ) {
+        $line =~ s!PWD!$SHAREDIR!;
+        $line =~ s!TMP!$TMPDIR!;
+        $line =~ s!PORT!$port!;
+        print $out $line;
+    }
+
+    # clean up.
+    close $in;
+    close $out;
+}
+
+
 
 # -- private subs
 
