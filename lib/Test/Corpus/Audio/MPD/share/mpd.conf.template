@@ -13,6 +13,6 @@ default_permissions  "read,add,control,admin"
 connection_timeout   "10"
 audio_output {
     name "null"
-    type "null"
+    type "alsa"
 }
 
