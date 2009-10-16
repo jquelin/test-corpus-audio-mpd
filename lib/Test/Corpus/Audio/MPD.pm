@@ -19,6 +19,22 @@ Readonly my $TMPDIR   => tempdir( CLEANUP=>1 );
 Readonly my $CONFIG   => catfile( $TMPDIR, 'mpd.conf' );
 
 
+{ # this will be run when module will be use-d
+    my $restart = 0;
+    my $stopit  = 0;
+
+    $restart = _stop_user_mpd_if_needed();
+    customize_test_mpd_configuration();
+    $stopit  = start_test_mpd();
+
+    END {
+        stop_test_mpd() if $stopit;
+        return unless $restart;       # no need to restart
+        system 'mpd 2>/dev/null';     # restart user mpd
+        sleep 1;                      # wait 1 second to let mpd start.
+    }
+}
+
 
 # -- public subs
 
