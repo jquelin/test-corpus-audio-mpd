@@ -2,6 +2,10 @@ Revision history for Test::Corpus::Audio::MPD
 
 {{$NEXT}}
 
+1.092900 Sat Oct 17 16:36:33 2009
+ - null output cannot setvol with mpd 0.15
+ - playlist need to be in a writable directory for tests
+
 1.092890 Fri Oct 16 15:54:46 2009
  - original release, taken from audio-mpd
  - fixed to match mpd 0.15 behaviour
