@@ -1,6 +1,6 @@
 port                 "PORT"
 music_directory      "PWD/music"
-playlist_directory   "PWD/playlists"
+playlist_directory   "TMP/playlists"
 log_file             "/dev/null"
 error_file           "/dev/null"
 db_file              "TMP/music.db"

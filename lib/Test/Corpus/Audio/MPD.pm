@@ -4,14 +4,16 @@ use warnings;
 package Test::Corpus::Audio::MPD;
 # ABSTRACT: automate launching of fake mdp for testing purposes
 
-use File::Basename        qw{ fileparse };
+use File::Basename        qw{ fileparse      };
+use File::Copy            qw{ copy           };
 use File::Spec::Functions qw{ catdir catfile };
-use File::Temp            qw{ tempdir };
+use File::Temp            qw{ tempdir        };
 use Module::Util          qw{ find_installed };
 use Readonly;
 
 use base qw{ Exporter };
 our @EXPORT = qw{
+    $PLAYLISTDIR
     customize_test_mpd_configuration
     start_test_mpd stop_test_mpd
 };
@@ -20,6 +22,7 @@ Readonly my $SHAREDIR => _find_share_dir();
 Readonly my $TEMPLATE => "$SHAREDIR/mpd.conf.template";
 Readonly my $TMPDIR   => tempdir( CLEANUP=>1 );
 Readonly my $CONFIG   => catfile( $TMPDIR, 'mpd.conf' );
+Readonly our $PLAYLISTDIR => catdir( $TMPDIR, 'playlists' );
 
 
 { # this will be run when module will be use-d
@@ -70,6 +73,11 @@ sub customize_test_mpd_configuration {
     # clean up.
     close $in;
     close $out;
+
+    # copy the playlists. playlist need to be in a writable directory,
+    # since tests will create and remove some playlists.
+    mkdir $PLAYLISTDIR;
+    copy( glob("$SHAREDIR/playlists/*"), $PLAYLISTDIR );
 }
 
 
