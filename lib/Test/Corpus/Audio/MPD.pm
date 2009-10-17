@@ -13,8 +13,8 @@ use Readonly;
 
 use base qw{ Exporter };
 our @EXPORT = qw{
-    $PLAYLISTDIR
     customize_test_mpd_configuration
+    playlist_dir
     start_test_mpd stop_test_mpd
 };
 
@@ -22,7 +22,7 @@ Readonly my $SHAREDIR => _find_share_dir();
 Readonly my $TEMPLATE => "$SHAREDIR/mpd.conf.template";
 Readonly my $TMPDIR   => tempdir( CLEANUP=>1 );
 Readonly my $CONFIG   => catfile( $TMPDIR, 'mpd.conf' );
-Readonly our $PLAYLISTDIR => catdir( $TMPDIR, 'playlists' );
+Readonly my $PLAYLISTDIR => catdir( $TMPDIR, 'playlists' );
 
 
 { # this will be run when module will be use-d
@@ -79,6 +79,15 @@ sub customize_test_mpd_configuration {
     mkdir $PLAYLISTDIR;
     copy( glob("$SHAREDIR/playlists/*"), $PLAYLISTDIR );
 }
+
+
+=method my $dir = $playlist_dir();
+
+Return the temp dir where the test playlists will be stored.
+
+=cut
+
+sub playlist_dir { $PLAYLISTDIR }
 
 
 =method start_test_mpd();
