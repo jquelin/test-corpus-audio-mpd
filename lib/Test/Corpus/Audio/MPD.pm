@@ -27,6 +27,13 @@ Readonly my $PLAYLISTDIR => catdir( $TMPDIR, 'playlists' );
 
 
 { # this will be run when module will be use-d
+
+    # check if mpd (the real music player daemon, not freebsd's
+    # multilink ppp daemon
+    my $output = qx{ mpd --version 2>&1 } or die "mpd not installed";
+    die "installed mpd is not music player daemon"
+        unless $output =~ /Music Player Daemon/;
+
     my $restart = 0;
     my $stopit  = 0;
 
