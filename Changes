@@ -2,6 +2,10 @@ Revision history for Test::Corpus::Audio::MPD
 
 {{$NEXT}}
 
+1.092920 Mon Oct 19 16:48:42 2009
+ - require perl 5.8.x
+ - add checks to see if mpd (really music player daemon) is installed
+
 1.092900 Sat Oct 17 16:36:33 2009
  - null output cannot setvol with mpd 0.15
  - playlist need to be in a writable directory for tests
