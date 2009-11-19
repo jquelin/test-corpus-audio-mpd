@@ -19,10 +19,10 @@ our @EXPORT = qw{
     start_test_mpd stop_test_mpd
 };
 
-Readonly my $SHAREDIR => _find_share_dir();
-Readonly my $TEMPLATE => "$SHAREDIR/mpd.conf.template";
-Readonly my $TMPDIR   => tempdir( CLEANUP=>1 );
-Readonly my $CONFIG   => catfile( $TMPDIR, 'mpd.conf' );
+Readonly my $SHAREDIR    => _find_share_dir();
+Readonly my $TEMPLATE    => "$SHAREDIR/mpd.conf.template";
+Readonly my $TMPDIR      => tempdir( CLEANUP=>1 );
+Readonly my $CONFIG      => catfile( $TMPDIR, 'mpd.conf' );
 Readonly my $PLAYLISTDIR => catdir( $TMPDIR, 'playlists' );
 
 
