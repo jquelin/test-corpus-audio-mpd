@@ -2,6 +2,9 @@ Revision history for Test::Corpus::Audio::MPD
 
 {{$NEXT}}
 
+1.093230  2009-11-19 17:16:35 Europe/Paris
+ - pod update
+
 1.092920 Mon Oct 19 16:48:42 2009
  - require perl 5.8.x
  - add checks to see if mpd (really music player daemon) is installed
