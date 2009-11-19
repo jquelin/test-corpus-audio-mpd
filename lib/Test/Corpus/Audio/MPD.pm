@@ -89,7 +89,7 @@ sub customize_test_mpd_configuration {
 }
 
 
-=method my $dir = $playlist_dir();
+=method my $dir = playlist_dir();
 
 Return the temp dir where the test playlists will be stored.
 
@@ -197,35 +197,36 @@ In case you want more control on the test mpd server, you can use the
 supplied public methods. This might be useful when trying to test
 connections with mpd server.
 
+
 =head1 SEE ALSO
 
-You can find more information on the mpd project on its homepage at
-L<http://www.musicpd.org>.wikia.com>.
-
-Original code (2005) by Tue Abrahamsen C<< <tue.abrahamsen@gmail.com> >>,
-documented in 2006 by Nicholas J. Humfrey C<< <njh@aelius.com> >>.
-
-C<Audio::MPD> development takes place on <audio-mpd@googlegroups.com>:
-feel free to join us. (use L<http://groups.google.com/group/audio-mpd>
-to sign in). Our git repository is located at
-L<http://github.com/jquelin/audio-mpd.git>.
-
-
-You can also look for information on this module at:
+You can look for information on this module at:
 
 =over 4
 
+=item * Search CPAN
+
+L<http://search.cpan.org/dist/Test-Corpus-Audio-MPD>
+
+=item * See open / report bugs
+
+L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Test-Corpus-Audio-MPD>
+
+=item * Mailing-list (same as L<Audio::MPD>)
+
+L<http://groups.google.com/group/audio-mpd>
+
+=item * Git repository
+
+L<http://github.com/jquelin/test-corpus-audio-mpd>
+
 =item * AnnoCPAN: Annotated CPAN documentation
 
-L<http://annocpan.org/dist/Audio-MPD>
+L<http://annocpan.org/dist/Test-Corpus-Audio-MPD>
 
 =item * CPAN Ratings
 
-L<http://cpanratings.perl.org/d/Audio-MPD>
-
-=item * Open bugs
-
-L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Audio-MPD>
+L<http://cpanratings.perl.org/d/Test-Corpus-Audio-MPD>
 
 =back
 
