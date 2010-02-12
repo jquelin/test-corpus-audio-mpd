@@ -5,11 +5,10 @@ use warnings;
 package Test::Corpus::Audio::MPD;
 # ABSTRACT: automate launching of fake mdp for testing purposes
 
-use File::Basename        qw{ fileparse      };
 use File::Copy            qw{ copy           };
+use File::ShareDir        qw{ dist_dir       };
 use File::Spec::Functions qw{ catdir catfile };
 use File::Temp            qw{ tempdir        };
-use Module::Util          qw{ find_installed };
 use Readonly;
 
 use base qw{ Exporter };
@@ -19,7 +18,7 @@ our @EXPORT = qw{
     start_test_mpd stop_test_mpd
 };
 
-Readonly my $SHAREDIR    => _find_share_dir();
+Readonly my $SHAREDIR    => dist_dir('Test-Corpus-Audio-MPD');
 Readonly my $TEMPLATE    => "$SHAREDIR/mpd.conf.template";
 Readonly my $TMPDIR      => tempdir( CLEANUP=>1 );
 Readonly my $CONFIG      => catfile( $TMPDIR, 'mpd.conf' );
@@ -126,18 +125,6 @@ sub stop_test_mpd {
 
 
 # -- private subs
-
-#
-# my $path = _find_share_dir();
-#
-# return the absolute path where all resources will be placed.
-#
-sub _find_share_dir {
-    my $path = find_installed(__PACKAGE__);
-    my ($undef, $dirname) = fileparse($path);
-    return catdir($dirname, 'MPD', 'share');
-}
-
 
 #
 # my $was_running = _stop_user_mpd_if_needed()
