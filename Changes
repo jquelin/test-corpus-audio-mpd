@@ -2,6 +2,11 @@ Revision history for Test::Corpus::Audio::MPD
 
 {{$NEXT}}
 
+1.100430  2010-02-12 13:58:06 Europe/Paris
+ - WARNING: no more makefile.pl supplied, only a build.pl
+ - using file::sharedir for embedded test files
+ - using path::class internally
+
 1.093230  2009-11-19 17:16:35 Europe/Paris
  - pod update
 
