@@ -5,10 +5,10 @@ use warnings;
 package Test::Corpus::Audio::MPD;
 # ABSTRACT: automate launching of fake mdp for testing purposes
 
-use File::Copy            qw{ copy           };
-use File::ShareDir        qw{ dist_dir       };
-use File::Spec::Functions qw{ catdir catfile };
-use File::Temp            qw{ tempdir        };
+use File::Copy            qw{ copy     };
+use File::ShareDir        qw{ dist_dir };
+use File::Temp            qw{ tempdir  };
+use Path::Class;
 use Readonly;
 
 use base qw{ Exporter };
@@ -18,11 +18,11 @@ our @EXPORT = qw{
     start_test_mpd stop_test_mpd
 };
 
-Readonly my $SHAREDIR    => dist_dir('Test-Corpus-Audio-MPD');
-Readonly my $TEMPLATE    => "$SHAREDIR/mpd.conf.template";
-Readonly my $TMPDIR      => tempdir( CLEANUP=>1 );
-Readonly my $CONFIG      => catfile( $TMPDIR, 'mpd.conf' );
-Readonly my $PLAYLISTDIR => catdir( $TMPDIR, 'playlists' );
+Readonly my $SHAREDIR    => dir( dist_dir('Test-Corpus-Audio-MPD') );
+Readonly my $TEMPLATE    => $SHAREDIR->file( 'mpd.conf.template' );
+Readonly my $TMPDIR      => dir( tempdir( CLEANUP=>1 ) );
+Readonly my $CONFIG      => $TMPDIR->file( 'mpd.conf' );
+Readonly my $PLAYLISTDIR => $TMPDIR->subdir( 'playlists' );
 
 
 { # this will be run when module will be use-d
@@ -83,7 +83,7 @@ sub customize_test_mpd_configuration {
 
     # copy the playlists. playlist need to be in a writable directory,
     # since tests will create and remove some playlists.
-    mkdir $PLAYLISTDIR;
+    $PLAYLISTDIR->mkpath;
     copy( glob("$SHAREDIR/playlists/*"), $PLAYLISTDIR );
 }
 
