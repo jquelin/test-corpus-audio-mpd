@@ -176,9 +176,10 @@ is C<use>-d.
 Once the tests are run, the mpd server will be shut down, and the
 original one will be relaunched (if there was one).
 
-Note that the test mpd will listen to C<localhost>, so you are on the safe
-side. Note also that the test suite comes with its own ogg files - and yes,
-we can redistribute them since it's only some random voice recordings :-)
+Note that the test mpd will listen to C<localhost>, so you are on the
+safe side. Note also that the test suite comes with its own ogg files.
+Those files are 2 seconds tracks recording my voice saying ok, and are
+freely redistributable under the same license as the code itself.
 
 In case you want more control on the test mpd server, you can use the
 supplied public methods. This might be useful when trying to test
