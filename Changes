@@ -2,6 +2,9 @@ Revision history for Test::Corpus::Audio::MPD
 
 {{$NEXT}}
 
+1.110600  2011-03-01 14:20:28 Europe/Paris
+ - rt#66262 - since mpd 0.16.x, option --create-db has been removed
+
 1.100500  2010-02-19 11:17:34 Europe/Paris
  - clarify ogg files license for debian
 
