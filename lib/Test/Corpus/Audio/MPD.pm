@@ -104,7 +104,7 @@ Start the fake mpd, and die if there were any error.
 =cut
 
 sub start_test_mpd {
-    my $output = qx{ mpd --create-db $CONFIG 2>&1 };
+    my $output = qx{ mpd $CONFIG 2>&1 };
     die "could not start fake mpd: $output\n" if $output;
     sleep 1;   # wait 1 second to let mpd start.
     return 1;
