@@ -2,6 +2,10 @@ Revision history for Test::Corpus::Audio::MPD
 
 {{$NEXT}}
 
+1.110710  2011-03-12 16:00:56 Europe/Paris
+ - fix rt#66573 - unrecognized config parameter in mpd 0.16 (Alessandro
+   Ghedini)
+
 1.110600  2011-03-01 14:20:28 Europe/Paris
  - rt#66262 - since mpd 0.16.x, option --create-db has been removed
 
