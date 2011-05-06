@@ -1,6 +1,7 @@
 Revision history for Test::Corpus::Audio::MPD
 
 {{$NEXT}}
+ - fix rt#67982 - use mpd return value to see if there was an error
 
 1.110710  2011-03-12 16:00:56 Europe/Paris
  - fix rt#66573 - unrecognized config parameter in mpd 0.16 (Alessandro
