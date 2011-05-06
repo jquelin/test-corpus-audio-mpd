@@ -105,7 +105,8 @@ Start the fake mpd, and die if there were any error.
 
 sub start_test_mpd {
     my $output = qx{ mpd $CONFIG 2>&1 };
-    die "could not start fake mpd: $output\n" if $output;
+    my $rv = $? >>8;
+    die "could not start fake mpd: $output\n" if $rv;
     sleep 1;   # wait 1 second to let mpd start.
     return 1;
 }
