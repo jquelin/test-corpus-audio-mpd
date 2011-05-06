@@ -1,8 +1,19 @@
+#
+# This file is part of Test-Corpus-Audio-MPD
+#
+# This software is copyright (c) 2009 by Jerome Quelin.
+#
+# This is free software; you can redistribute it and/or modify it under
+# the same terms as the Perl 5 programming language system itself.
+#
 use 5.008;
 use strict;
 use warnings;
 
 package Test::Corpus::Audio::MPD;
+BEGIN {
+  $Test::Corpus::Audio::MPD::VERSION = '1.111260';
+}
 # ABSTRACT: automate launching of fake mdp for testing purposes
 
 use File::Copy                qw{ copy     };
@@ -51,15 +62,6 @@ Readonly my $PLAYLISTDIR => $TMPDIR->subdir( 'playlists' );
 
 # -- public subs
 
-=method customize_test_mpd_configuration( [$port] );
-
-Create a fake mpd configuration file, based on the file
-F<mpd.conf.template> located in F<share> subdir. The string PWD will be
-replaced by the real path (ie, where the tarball has been untarred),
-while TMP will be replaced by a new temp directory. The string PORT will
-be replaced by C<$port> if specified, 6600 otherwise (MPD's default).
-
-=cut
 
 sub customize_test_mpd_configuration {
     my ($port) = @_;
@@ -88,20 +90,10 @@ sub customize_test_mpd_configuration {
 }
 
 
-=method my $dir = playlist_dir();
-
-Return the temp dir where the test playlists will be stored.
-
-=cut
 
 sub playlist_dir { $PLAYLISTDIR }
 
 
-=method start_test_mpd();
-
-Start the fake mpd, and die if there were any error.
-
-=cut
 
 sub start_test_mpd {
     my $output = qx{ mpd $CONFIG 2>&1 };
@@ -112,11 +104,6 @@ sub start_test_mpd {
 }
 
 
-=method stop_test_mpd();
-
-Kill the fake mpd.
-
-=cut
 
 sub stop_test_mpd {
     system "mpd --kill $CONFIG 2>/dev/null";
@@ -151,7 +138,17 @@ sub _stop_user_mpd_if_needed {
 
 
 1;
-__END__
+
+
+=pod
+
+=head1 NAME
+
+Test::Corpus::Audio::MPD - automate launching of fake mdp for testing purposes
+
+=head1 VERSION
+
+version 1.111260
 
 =head1 SYNOPSIS
 
@@ -186,6 +183,27 @@ In case you want more control on the test mpd server, you can use the
 supplied public methods. This might be useful when trying to test
 connections with mpd server.
 
+=head1 METHODS
+
+=head2 customize_test_mpd_configuration( [$port] );
+
+Create a fake mpd configuration file, based on the file
+F<mpd.conf.template> located in F<share> subdir. The string PWD will be
+replaced by the real path (ie, where the tarball has been untarred),
+while TMP will be replaced by a new temp directory. The string PORT will
+be replaced by C<$port> if specified, 6600 otherwise (MPD's default).
+
+=head2 my $dir = playlist_dir();
+
+Return the temp dir where the test playlists will be stored.
+
+=head2 start_test_mpd();
+
+Start the fake mpd, and die if there were any error.
+
+=head2 stop_test_mpd();
+
+Kill the fake mpd.
 
 =head1 SEE ALSO
 
@@ -218,4 +236,20 @@ L<http://annocpan.org/dist/Test-Corpus-Audio-MPD>
 L<http://cpanratings.perl.org/d/Test-Corpus-Audio-MPD>
 
 =back
+
+=head1 AUTHOR
+
+Jerome Quelin
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2009 by Jerome Quelin.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
+=cut
+
+
+__END__
 
