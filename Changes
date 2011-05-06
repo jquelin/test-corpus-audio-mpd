@@ -1,6 +1,8 @@
 Revision history for Test::Corpus::Audio::MPD
 
 {{$NEXT}}
+
+1.111260  2011-05-06 14:15:25 Europe/Paris
  - fix rt#67982 - use mpd return value to see if there was an error
 
 1.110710  2011-03-12 16:00:56 Europe/Paris
