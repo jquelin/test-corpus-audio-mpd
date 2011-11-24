@@ -1,6 +1,8 @@
 Revision history for Test::Corpus::Audio::MPD
 
 {{$NEXT}}
+
+1.113281  2011-11-24 14:41:04 Europe/Paris
  - listen on ipv6
 
 1.113280  2011-11-24 14:00:10 Europe/Paris
