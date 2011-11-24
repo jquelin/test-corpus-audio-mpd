@@ -11,6 +11,7 @@ share/mpd.conf.template
 share/music/dir1/title-artist-album.ogg
 share/music/dir1/title-artist.ogg
 share/music/dir2/album.ogg
+share/music/title-artist-album-genre.ogg
 share/music/title.ogg
 share/playlists/test.m3u
 t/00-compile.t
