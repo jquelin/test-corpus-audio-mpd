@@ -1,6 +1,8 @@
 Revision history for Test::Corpus::Audio::MPD
 
 {{$NEXT}}
+
+1.113282  2011-11-24 14:49:26 Europe/Paris
  - new file to test "genre" tag
 
 1.113281  2011-11-24 14:41:04 Europe/Paris
