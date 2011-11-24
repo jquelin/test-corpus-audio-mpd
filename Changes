@@ -1,5 +1,8 @@
 Revision history for Test::Corpus::Audio::MPD
 
+1.113280  2011-11-24 14:00:10 Europe/Paris
+ - fix rt#71202 - using software mixer to prevent volume setting perm
+
 1.111260  2011-05-06 14:15:25 Europe/Paris
  - fix rt#67982 - use mpd return value to see if there was an error
 
