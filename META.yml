@@ -17,7 +17,7 @@ name: Test-Corpus-Audio-MPD
 provides:
   Test::Corpus::Audio::MPD:
     file: lib/Test/Corpus/Audio/MPD.pm
-    version: 1.113280
+    version: 1.113281
 requires:
   Exporter: 0
   File::Copy: 0
@@ -34,7 +34,7 @@ resources:
   homepage: http://search.cpan.org/dist/Test-Corpus-Audio-MPD/
   repository: git://github.com/jquelin/test-corpus-audio-mpd.git
   x_MailingList: http://groups.google.com/group/audio-mpd
-version: 1.113280
+version: 1.113281
 x_Dist_Zilla:
   plugins:
     -

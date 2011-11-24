@@ -47,7 +47,7 @@
    "provides" : {
       "Test::Corpus::Audio::MPD" : {
          "file" : "lib/Test/Corpus/Audio/MPD.pm",
-         "version" : "1.113280"
+         "version" : "1.113281"
       }
    },
    "release_status" : "stable",
@@ -64,7 +64,7 @@
       },
       "x_MailingList" : "http://groups.google.com/group/audio-mpd"
    },
-   "version" : "1.113280",
+   "version" : "1.113281",
    "x_Dist_Zilla" : {
       "plugins" : [
          {
