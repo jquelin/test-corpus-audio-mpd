@@ -1,6 +1,7 @@
 Revision history for Test::Corpus::Audio::MPD
 
 {{$NEXT}}
+ - listen on ipv6
 
 1.113280  2011-11-24 14:00:10 Europe/Paris
  - fix rt#71202 - using software mixer to prevent volume setting perm
