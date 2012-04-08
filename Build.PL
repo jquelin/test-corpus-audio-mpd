@@ -18,7 +18,7 @@ my %module_build_args = (
     "Jerome Quelin"
   ],
   "dist_name" => "Test-Corpus-Audio-MPD",
-  "dist_version" => "1.113282",
+  "dist_version" => "1.120990",
   "license" => "perl",
   "module_name" => "Test::Corpus::Audio::MPD",
   "recommends" => {},

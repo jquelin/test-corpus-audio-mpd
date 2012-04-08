@@ -12,7 +12,7 @@ use warnings;
 
 package Test::Corpus::Audio::MPD;
 {
-  $Test::Corpus::Audio::MPD::VERSION = '1.113282';
+  $Test::Corpus::Audio::MPD::VERSION = '1.120990';
 }
 # ABSTRACT: automate launching of fake mdp for testing purposes
 
@@ -148,7 +148,7 @@ Test::Corpus::Audio::MPD - automate launching of fake mdp for testing purposes
 
 =head1 VERSION
 
-version 1.113282
+version 1.120990
 
 =head1 SYNOPSIS
 
