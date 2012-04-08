@@ -2,6 +2,9 @@ Revision history for Test::Corpus::Audio::MPD
 
 {{$NEXT}}
 
+1.120990  2012-04-08 11:11:16 Europe/Paris
+ - rt#76383 - fix ipv4/ipv6 binding tests (florian schlich)
+
 1.113282  2011-11-24 14:49:26 Europe/Paris
  - new file to test "genre" tag
 
